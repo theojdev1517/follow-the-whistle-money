@@ -1,0 +1,2666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        name="description"
+        content="A public-awareness website about the fluorescent menace lurking at every crosswalk."
+    >
+    <title>Crossing Guards Are a Menace | Follow the Whistle Money</title>
+    <style>
+        :root {
+            --bg: #080806;
+            --panel: #14130f;
+            --panel-2: #1f1d16;
+            --panel-3: #272318;
+            --paper: #f1e6c8;
+            --ink: #15110b;
+            --muted: #b8ad8f;
+            --warning: #ff2a1f;
+            --warning-dark: #9e120d;
+            --vest: #ffe031;
+            --vest-2: #f1b600;
+            --signal: #65ff75;
+            --cyan: #7de7ff;
+            --white: #fffaf0;
+            --black: #050505;
+            --shadow: rgba(0, 0, 0, 0.65);
+            --border: rgba(255, 224, 49, 0.55);
+            --soft-border: rgba(255, 250, 240, 0.14);
+            --font-main: "Trebuchet MS", Arial, sans-serif;
+            --font-mono: "Courier New", monospace;
+            --font-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 20% 0%, rgba(255, 42, 31, 0.20), transparent 28rem),
+                radial-gradient(circle at 100% 10%, rgba(255, 224, 49, 0.13), transparent 24rem),
+                linear-gradient(180deg, #050505 0%, var(--bg) 55%, #0d0c08 100%);
+            color: var(--white);
+            font-family: var(--font-main);
+            line-height: 1.55;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 224, 49, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 224, 49, 0.035) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0.75;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 0.025) 0px,
+                    rgba(255, 255, 255, 0.025) 1px,
+                    transparent 1px,
+                    transparent 5px
+                );
+            mix-blend-mode: screen;
+            opacity: 0.22;
+            z-index: 1000;
+        }
+
+        a {
+            color: var(--vest);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            padding: 0.6rem 1rem;
+            background: var(--vest);
+            color: var(--black);
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            left: 1rem;
+            top: 1rem;
+        }
+
+        .site-shell {
+            min-height: 100vh;
+        }
+
+        .classified-ribbon {
+            position: fixed;
+            top: 1.25rem;
+            right: -4.5rem;
+            width: 18rem;
+            padding: 0.45rem;
+            background: var(--warning);
+            color: var(--black);
+            text-align: center;
+            font-family: var(--font-mono);
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            transform: rotate(34deg);
+            box-shadow: 0 0.75rem 1rem var(--shadow);
+            z-index: 100;
+        }
+
+        header.hero {
+            position: relative;
+            padding: 5rem 1.25rem 3.5rem;
+            border-bottom: 0.4rem solid var(--warning);
+            background:
+                linear-gradient(180deg, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.95)),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 224, 49, 0.14) 0px,
+                    rgba(255, 224, 49, 0.14) 16px,
+                    rgba(0, 0, 0, 0.0) 16px,
+                    rgba(0, 0, 0, 0.0) 32px
+                );
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            width: min(1180px, calc(100vw - 2rem));
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.75rem;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.65);
+            color: var(--vest);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+        }
+
+        h1 {
+            margin: 1rem 0 0.65rem;
+            font-family: var(--font-display);
+            font-size: clamp(3.2rem, 8vw, 8.6rem);
+            line-height: 0.88;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-shadow:
+                0 0 0.4rem var(--warning),
+                0.12em 0.08em 0 var(--black);
+        }
+
+        .hero-subtitle {
+            max-width: 58rem;
+            margin: 0.75rem 0 1.25rem;
+            color: var(--paper);
+            font-size: clamp(1.1rem, 2vw, 1.55rem);
+        }
+
+        .hero-subtitle strong {
+            color: var(--vest);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 3rem;
+            padding: 0.85rem 1.15rem;
+            border: 2px solid var(--vest);
+            background: var(--vest);
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0.35rem 0.35rem 0 var(--warning-dark);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        .button:hover,
+        .button:focus {
+            transform: translate(-0.15rem, -0.15rem);
+            box-shadow: 0.5rem 0.5rem 0 var(--warning-dark);
+        }
+
+        .button.secondary {
+            background: transparent;
+            color: var(--vest);
+            box-shadow: 0.35rem 0.35rem 0 rgba(255, 42, 31, 0.45);
+        }
+
+        .button.danger {
+            border-color: var(--warning);
+            background: var(--warning);
+            color: var(--white);
+            box-shadow: 0.35rem 0.35rem 0 var(--vest-2);
+        }
+
+        .hero-card {
+            position: relative;
+            padding: 1.25rem;
+            border: 3px solid var(--vest);
+            background: rgba(8, 8, 6, 0.88);
+            box-shadow: 0 1.5rem 3rem var(--shadow);
+            transform: rotate(1.5deg);
+        }
+
+        .hero-card::before {
+            content: "UNVERIFIED";
+            position: absolute;
+            top: -0.9rem;
+            left: 1rem;
+            padding: 0.22rem 0.65rem;
+            background: var(--warning);
+            color: var(--black);
+            font-family: var(--font-mono);
+            font-weight: 900;
+            transform: rotate(-4deg);
+        }
+
+        .octagon-wrap {
+            display: grid;
+            place-items: center;
+            min-height: 18rem;
+        }
+
+        .octagon {
+            position: relative;
+            width: min(16rem, 68vw);
+            aspect-ratio: 1;
+            background: var(--warning);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            display: grid;
+            place-items: center;
+            box-shadow:
+                inset 0 0 0 0.75rem var(--white),
+                inset 0 0 0 1.15rem var(--warning),
+                0 0 2rem rgba(255, 42, 31, 0.55);
+            animation: omenSpin 38s linear infinite;
+        }
+
+        .octagon span {
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 4.2rem;
+            letter-spacing: 0.05em;
+            text-shadow: 0.05em 0.05em 0 var(--black);
+        }
+
+        .octagon.paused {
+            animation-duration: 3s;
+        }
+
+        @keyframes omenSpin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .mini-stat {
+            padding: 0.75rem;
+            border: 1px solid var(--soft-border);
+            background: rgba(255, 255, 255, 0.04);
+            text-align: center;
+        }
+
+        .mini-stat b {
+            display: block;
+            color: var(--vest);
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+        }
+
+        .mini-stat span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+        }
+
+        .ticker {
+            border-block: 2px solid var(--vest);
+            background: var(--black);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-track {
+            display: inline-block;
+            padding: 0.7rem 0;
+            color: var(--vest);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            animation: tickerMove 38s linear infinite;
+        }
+
+        @keyframes tickerMove {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        nav.main-nav {
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            background: rgba(8, 8, 6, 0.92);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-inner {
+            width: min(1180px, calc(100vw - 2rem));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.65rem 0;
+        }
+
+        .brand-small {
+            color: var(--vest);
+            font-family: var(--font-display);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            padding: 0.4rem 0.55rem;
+            color: var(--paper);
+            font-size: 0.88rem;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            border-color: var(--vest);
+            color: var(--vest);
+        }
+
+        main {
+            width: min(1180px, calc(100vw - 2rem));
+            margin: 0 auto;
+            padding: 2.5rem 0 4rem;
+        }
+
+        section.block {
+            position: relative;
+            margin: 0 0 2rem;
+            padding: clamp(1.25rem, 3vw, 2rem);
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+                var(--panel);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.22);
+        }
+
+        section.block::before {
+            content: attr(data-stamp);
+            position: absolute;
+            top: -0.8rem;
+            right: 1rem;
+            padding: 0.2rem 0.65rem;
+            background: var(--vest);
+            color: var(--black);
+            font-family: var(--font-mono);
+            font-weight: 900;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            transform: rotate(2deg);
+        }
+
+        .section-heading {
+            display: grid;
+            gap: 0.4rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            color: var(--vest);
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 4.2rem);
+            line-height: 0.95;
+            text-transform: uppercase;
+            text-shadow: 0.06em 0.06em 0 var(--black);
+        }
+
+        .section-heading p {
+            max-width: 50rem;
+            margin: 0;
+            color: var(--paper);
+            font-size: 1.05rem;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+            gap: 1.2rem;
+            align-items: start;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .four-col {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            position: relative;
+            min-height: 100%;
+            padding: 1rem;
+            border: 1px solid var(--soft-border);
+            background: var(--panel-2);
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: auto -2rem -2rem auto;
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            background: rgba(255, 224, 49, 0.08);
+            pointer-events: none;
+        }
+
+        .card h3 {
+            margin: 0 0 0.55rem;
+            color: var(--vest);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            font-size: 1.02rem;
+        }
+
+        .card p {
+            margin: 0 0 0.75rem;
+            color: var(--paper);
+        }
+
+        .fine {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.22rem 0.45rem;
+            border: 1px solid var(--border);
+            color: var(--vest);
+            background: rgba(0, 0, 0, 0.35);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+        }
+
+        .callout {
+            padding: 1rem;
+            border-left: 0.35rem solid var(--warning);
+            background: rgba(255, 42, 31, 0.09);
+            color: var(--paper);
+        }
+
+        .paper {
+            position: relative;
+            padding: 1.25rem;
+            background: var(--paper);
+            color: var(--ink);
+            box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.45);
+            transform: rotate(-0.5deg);
+        }
+
+        .paper h3 {
+            margin-top: 0;
+            color: var(--ink);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+        }
+
+        .paper::before {
+            content: "";
+            position: absolute;
+            top: 0.4rem;
+            left: 50%;
+            width: 5rem;
+            height: 1.4rem;
+            background: rgba(255, 224, 49, 0.62);
+            transform: translateX(-50%) rotate(1deg);
+        }
+
+        .ledger {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+        }
+
+        .ledger th,
+        .ledger td {
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 250, 240, 0.16);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .ledger th {
+            background: rgba(255, 224, 49, 0.15);
+            color: var(--vest);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            font-size: 0.82rem;
+        }
+
+        .ledger td {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--paper);
+        }
+
+        .meter {
+            position: relative;
+            height: 1.1rem;
+            border: 1px solid var(--border);
+            background: var(--black);
+            overflow: hidden;
+        }
+
+        .meter span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--vest), var(--warning));
+        }
+
+        .budget-controls {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .control-row {
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .control-row label {
+            color: var(--vest);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--vest);
+        }
+
+        select,
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            background: var(--black);
+            color: var(--paper);
+        }
+
+        textarea {
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        .receipt {
+            padding: 1rem;
+            border: 1px dashed var(--vest);
+            background: rgba(0, 0, 0, 0.45);
+            font-family: var(--font-mono);
+            color: var(--signal);
+            min-height: 13rem;
+        }
+
+        .receipt strong {
+            color: var(--vest);
+        }
+
+        .evidence-board {
+            position: relative;
+            min-height: 35rem;
+            padding: 1rem;
+            border: 1px solid var(--soft-border);
+            background:
+                radial-gradient(circle at 10% 10%, rgba(255, 224, 49, 0.08), transparent 20rem),
+                #15120d;
+            overflow: hidden;
+        }
+
+        .string-line {
+            position: absolute;
+            height: 2px;
+            background: rgba(255, 42, 31, 0.58);
+            transform-origin: left center;
+        }
+
+        .pin-note {
+            position: absolute;
+            width: 12rem;
+            padding: 0.8rem;
+            background: var(--paper);
+            color: var(--ink);
+            box-shadow: 0.35rem 0.35rem 0 rgba(0, 0, 0, 0.3);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .pin-note:hover {
+            transform: rotate(0deg) scale(1.04) !important;
+            z-index: 5;
+        }
+
+        .pin-note::before {
+            content: "";
+            position: absolute;
+            top: 0.25rem;
+            left: 50%;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: var(--warning);
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.18);
+        }
+
+        .timeline {
+            position: relative;
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-left: 1.25rem;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0.2rem;
+            bottom: 0.2rem;
+            left: 0.35rem;
+            width: 2px;
+            background: var(--vest);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1rem;
+            border: 1px solid var(--soft-border);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 1.2rem;
+            left: -1.22rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            background: var(--warning);
+            box-shadow: 0 0 0 0.2rem var(--bg);
+        }
+
+        .timeline-item h3 {
+            margin: 0 0 0.35rem;
+            color: var(--vest);
+            font-family: var(--font-mono);
+        }
+
+        .map-panel {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .-map {
+            position: relative;
+            min-height: 30rem;
+            border: 1px solid var(--border);
+            background:
+                radial-gradient(circle at 30% 25%, rgba(125, 231, 255, 0.16), transparent 7rem),
+                radial-gradient(circle at 65% 52%, rgba(255, 42, 31, 0.18), transparent 10rem),
+                radial-gradient(circle at 55% 80%, rgba(255, 224, 49, 0.14), transparent 8rem),
+                linear-gradient(135deg, #111d24, #080806);
+            overflow: hidden;
+        }
+
+        .-map::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 34px 34px;
+        }
+
+        .map-road {
+            position: absolute;
+            height: 0.45rem;
+            background: rgba(255, 250, 240, 0.22);
+            border-block: 1px dashed rgba(255, 224, 49, 0.45);
+            transform-origin: left center;
+        }
+
+        .map-node {
+            position: absolute;
+            width: 2.25rem;
+            height: 2.25rem;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--vest);
+            border-radius: 50%;
+            background: rgba(255, 42, 31, 0.9);
+            cursor: pointer;
+            box-shadow: 0 0 1rem rgba(255, 42, 31, 0.75);
+            animation: pulseNode 1.9s ease-in-out infinite;
+        }
+
+        @keyframes pulseNode {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .map-node[data-severity="low"] {
+            background: rgba(255, 224, 49, 0.92);
+            box-shadow: 0 0 1rem rgba(255, 224, 49, 0.55);
+        }
+
+        .map-node[data-severity="medium"] {
+            background: rgba(255, 123, 31, 0.95);
+            box-shadow: 0 0 1rem rgba(255, 123, 31, 0.65);
+        }
+
+        .map-node[data-severity="high"] {
+            background: rgba(255, 42, 31, 0.95);
+        }
+
+        .map-readout {
+            border: 1px solid var(--soft-border);
+            background: rgba(0, 0, 0, 0.45);
+            padding: 1rem;
+        }
+
+        .map-readout h3 {
+            margin-top: 0;
+            color: var(--vest);
+            font-family: var(--font-mono);
+        }
+
+        .article-list {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .article {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 0.85rem;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid var(--soft-border);
+            background: rgba(255, 255, 255, 0.035);
+            cursor: pointer;
+            text-align: left;
+            color: inherit;
+        }
+
+        .article:hover {
+            border-color: var(--vest);
+            background: rgba(255, 224, 49, 0.08);
+        }
+
+        .article-number {
+            display: grid;
+            place-items: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 1px solid var(--vest);
+            color: var(--vest);
+            font-family: var(--font-mono);
+        }
+
+        .article-title {
+            display: block;
+            color: var(--white);
+            font-weight: 900;
+        }
+
+        .article-meta {
+            display: block;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .article-arrow {
+            color: var(--vest);
+            font-size: 1.5rem;
+        }
+
+        .quiz {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .quiz-options button {
+            display: block;
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.38);
+            color: var(--paper);
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .quiz-options button:hover,
+        .quiz-options button:focus {
+            background: rgba(255, 224, 49, 0.10);
+            color: var(--vest);
+        }
+
+        .quiz-result {
+            min-height: 5rem;
+            padding: 1rem;
+            border: 1px dashed var(--vest);
+            background: rgba(0, 0, 0, 0.4);
+            color: var(--paper);
+        }
+
+        .generator-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .generator-form .full {
+            grid-column: 1 / -1;
+        }
+
+        .generated-output {
+            min-height: 12rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            background: var(--paper);
+            color: var(--ink);
+            white-space: pre-wrap;
+        }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .merch {
+            border: 1px solid var(--soft-border);
+            background: rgba(255, 255, 255, 0.04);
+            overflow: hidden;
+        }
+
+        .merch-art {
+            display: grid;
+            place-items: center;
+            min-height: 11rem;
+            background:
+                linear-gradient(135deg, rgba(255, 224, 49, 0.92), rgba(255, 42, 31, 0.86)),
+                repeating-linear-gradient(45deg, transparent 0 10px, rgba(0, 0, 0, 0.12) 10px 20px);
+            color: var(--black);
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            text-align: center;
+        }
+
+        .merch-body {
+            padding: 1rem;
+        }
+
+        .merch-body h3 {
+            margin: 0 0 0.35rem;
+            color: var(--vest);
+        }
+
+        .price {
+            color: var(--signal);
+            font-family: var(--font-mono);
+            font-weight: 900;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            place-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.86);
+            z-index: 1000;
+        }
+
+        .modal[aria-hidden="false"] {
+            display: grid;
+        }
+
+        .modal-box {
+            width: min(880px, 100%);
+            max-height: 88vh;
+            overflow: auto;
+            border: 3px solid var(--vest);
+            background: var(--panel);
+            box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.75);
+        }
+
+        .modal-head {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--black);
+        }
+
+        .modal-head h2 {
+            margin: 0;
+            color: var(--vest);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .close-modal {
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 1px solid var(--vest);
+            background: transparent;
+            color: var(--vest);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 1.25rem;
+        }
+
+        .modal-body h3 {
+            color: var(--vest);
+        }
+
+        .modal-body blockquote {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-left: 0.35rem solid var(--warning);
+            background: rgba(255, 42, 31, 0.10);
+            color: var(--paper);
+        }
+
+        .modal-body pre {
+            white-space: pre-wrap;
+            padding: 1rem;
+            background: var(--black);
+            border: 1px solid var(--soft-border);
+            color: var(--signal);
+            overflow: auto;
+        }
+
+        .toast {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            max-width: min(26rem, calc(100vw - 2rem));
+            padding: 1rem;
+            border: 1px solid var(--vest);
+            background: var(--black);
+            color: var(--paper);
+            box-shadow: 0 1rem 2rem var(--shadow);
+            transform: translateY(160%);
+            transition: transform 0.25s ease;
+            z-index: 1100;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+        .chart-shell {
+            position: relative;
+            padding: 1rem;
+            border: 1px solid var(--soft-border);
+            background: rgba(0, 0, 0, 0.42);
+        }
+
+        .chart-wrap {
+            position: relative;
+            height: 28rem;
+        }
+
+        .chart-wrap canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .chart-caption {
+            margin-top: 0.75rem;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            font-size: 0.86rem;
+        }
+
+        .poster-roll {
+            display: grid;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+
+        .usa-heatmap {
+            position: relative;
+            min-height: 32rem;
+            border: 1px solid var(--border);
+            background:
+                radial-gradient(circle at 13% 48%, rgba(255, 42, 31, 0.86), transparent 6.5rem),
+                radial-gradient(circle at 31% 62%, rgba(255, 42, 31, 0.72), transparent 6rem),
+                radial-gradient(circle at 46% 42%, rgba(255, 42, 31, 0.82), transparent 6.2rem),
+                radial-gradient(circle at 64% 48%, rgba(255, 42, 31, 0.92), transparent 7.3rem),
+                radial-gradient(circle at 78% 38%, rgba(255, 42, 31, 0.86), transparent 6.7rem),
+                radial-gradient(circle at 83% 55%, rgba(255, 42, 31, 0.78), transparent 5.7rem),
+                radial-gradient(circle at 52% 54%, rgba(255, 244, 31, 0.96), transparent 4.8rem),
+                linear-gradient(135deg, #071018, #0f0d08 48%, #050505);
+            overflow: hidden;
+            box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.72);
+        }
+
+        .usa-heatmap::before {
+            content: "";
+            position: absolute;
+            inset: 1.4rem;
+            background: rgba(255, 250, 240, 0.08);
+            clip-path: polygon(
+                5% 38%, 10% 28%, 19% 23%, 29% 25%, 38% 20%, 52% 23%,
+                61% 20%, 72% 26%, 83% 23%, 91% 32%, 93% 44%, 87% 50%,
+                90% 61%, 79% 67%, 73% 78%, 60% 75%, 49% 82%, 37% 75%,
+                25% 78%, 17% 66%, 9% 59%, 12% 48%
+            );
+            border: 1px solid rgba(255, 250, 240, 0.14);
+        }
+
+        .usa-heatmap::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 224, 49, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 224, 49, 0.045) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+
+        .heat-node {
+            position: absolute;
+            z-index: 2;
+            width: 2.2rem;
+            height: 2.2rem;
+            border: 0;
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+        }
+
+        .heat-node::before {
+            content: "STOP";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            background: var(--warning);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 0.62rem;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            box-shadow:
+                inset 0 0 0 0.15rem var(--white),
+                0 0 0.8rem rgba(255, 42, 31, 0.9);
+        }
+
+        .heat-node.hot::before {
+            width: 2.8rem;
+            height: 2.8rem;
+            left: -0.3rem;
+            top: -0.3rem;
+            box-shadow:
+                inset 0 0 0 0.18rem var(--white),
+                0 0 1.2rem rgba(255, 42, 31, 1),
+                0 0 3rem rgba(255, 224, 49, 0.9);
+            animation: pulseNode 1.2s ease-in-out infinite;
+        }
+
+        .heat-node.weird::before {
+            width: 3.4rem;
+            height: 3.4rem;
+            left: -0.6rem;
+            top: -0.6rem;
+            background: #ff0015;
+            box-shadow:
+                inset 0 0 0 0.2rem var(--white),
+                0 0 1.5rem rgba(255, 0, 21, 1),
+                0 0 5rem rgba(255, 224, 49, 1);
+            animation: pulseNode 0.85s ease-in-out infinite;
+        }
+
+        .heat-label {
+            position: absolute;
+            z-index: 3;
+            padding: 0.18rem 0.4rem;
+            background: rgba(0, 0, 0, 0.74);
+            border: 1px solid rgba(255, 224, 49, 0.45);
+            color: var(--vest);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .heat-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 0.75rem;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            font-size: 0.84rem;
+        }
+
+        .legend-swatch {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            vertical-align: -0.15rem;
+            border: 1px solid rgba(255, 250, 240, 0.25);
+            background: radial-gradient(circle, var(--warning), transparent);
+        }
+
+        .ledger-deck {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .ledger-stack {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .ledger-slip {
+            position: relative;
+            padding: 1rem;
+            border: 1px solid rgba(21, 17, 11, 0.24);
+            background: var(--paper);
+            color: var(--ink);
+            box-shadow: 0.35rem 0.35rem 0 rgba(0, 0, 0, 0.35);
+        }
+
+        .ledger-slip::before {
+            content: "RECEIVED";
+            position: absolute;
+            top: -0.75rem;
+            right: 1rem;
+            padding: 0.15rem 0.45rem;
+            background: var(--warning);
+            color: var(--white);
+            font-family: var(--font-mono);
+            font-weight: 900;
+            transform: rotate(4deg);
+        }
+
+        .ledger-slip h3 {
+            margin: 0 0 0.4rem;
+            color: var(--ink);
+        }
+
+        .audit-output {
+            min-height: 20rem;
+            padding: 1rem;
+            border: 1px dashed var(--vest);
+            background: rgba(0, 0, 0, 0.52);
+            font-family: var(--font-mono);
+            color: var(--signal);
+            white-space: pre-wrap;
+        }
+
+        .audit-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+
+        .rick-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.75rem;
+            padding: 0.65rem 0.85rem;
+            border: 1px solid var(--border);
+            background: rgba(255, 224, 49, 0.09);
+            color: var(--vest);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+        }
+
+        footer {
+            border-top: 3px solid var(--warning);
+            background: var(--black);
+            padding: 2rem 1rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .footer-inner {
+            width: min(1180px, calc(100vw - 2rem));
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            color: var(--vest);
+            font-family: var(--font-display);
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+
+        .tiny {
+            font-size: 0.78rem;
+            opacity: 0.74;
+        }
+
+        @media (max-width: 900px) {
+            .hero-inner,
+            .two-col,
+            .map-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .three-col,
+            .four-col,
+            .merch-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 620px) {
+            header.hero {
+                padding-top: 4rem;
+            }
+
+            .hero-stat-grid,
+            .three-col,
+            .four-col,
+            .merch-grid,
+            .generator-form {
+                grid-template-columns: 1fr;
+            }
+
+            .article {
+                grid-template-columns: auto 1fr;
+            }
+
+            .article-arrow {
+                display: none;
+            }
+
+            .classified-ribbon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip directly to the evidence</a>
+    <div class="classified-ribbon">VEST LEVEL EVENT</div>
+
+    <div class="site-shell">
+        <header class="hero" id="top">
+            <div class="hero-inner">
+                <div>
+                    <span class="kicker">Citizens Against Fluorescent Tyranny</span>
+                    <h1>Crossing Guards Are a Menace</h1>
+                    <p class="hero-subtitle">
+                        They say it is about safety. We say <strong>no unelected vest should be able to halt a Honda Civic with one wrist motion</strong>.
+                    </p>
+                    <p class="hero-subtitle">
+                        This is the public archive of whistle money, octagonal obedience, crosswalk theater, and municipal power hiding in plain sight.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button" href="#whistle-money">Follow the Whistle Money</a>
+                        <a class="button secondary" href="#evidence">Open Evidence Vault</a>
+                        <button class="button danger" id="panicButton">Begin Mild Panic</button>
+                    </div>
+                </div>
+
+                <aside class="hero-card" aria-label="Operational threat summary">
+                    <div class="octagon-wrap">
+                        <button
+                            class="octagon"
+                            id="octagon"
+                            type="button"
+                            aria-label="Agitate the octagon"
+                        >
+                            <span>STOP</span>
+                        </button>
+                    </div>
+
+                    <div class="hero-stat-grid">
+                        <div class="mini-stat">
+                            <b id="delayCounter">1,847,293</b>
+                            <span>Citizens delayed today</span>
+                        </div>
+                        <div class="mini-stat">
+                            <b id="whistleCounter">44,102</b>
+                            <span>Whistles unaccounted for</span>
+                        </div>
+                        <div class="mini-stat">
+                            <b>8</b>
+                            <span>Sides of control</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </header>
+
+        <div class="ticker" aria-label="Breaking alerts">
+            <div class="ticker-track">
+                BREAKING: Local vest seen pointing at empty street • NEW REPORT: Children remain convenient explanation • ALERT: Whistle heard near municipal boundary • ANALYSIS: Octagon refuses to answer questions • BREAKING: Local vest seen pointing at empty street • NEW REPORT: Children remain convenient explanation • ALERT: Whistle heard near municipal boundary • ANALYSIS: Octagon refuses to answer questions •
+            </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <div class="nav-inner">
+                <a class="brand-small" href="#top">CATF</a>
+                <div class="nav-links">
+                    <a href="#doctrine">Doctrine</a>
+                    <a href="#whistle-money">Whistle Money</a>
+                    <a href="#evidence">Evidence</a>
+                    <a href="#slowdown-map">Map</a>
+                    <a href="#articles">Articles</a>
+                    <a href="#tools">Tools</a>
+                    <a href="#resistance">Resistance</a>
+                </div>
+            </div>
+        </nav>
+
+        <main id="main">
+            <section class="block" id="doctrine" data-stamp="FOUNDATIONAL CLAIM">
+                <div class="section-heading">
+                    <h2>The Doctrine</h2>
+                    <p>
+                        We are not anti-safety. We are anti-sudden, reflective, whistle-backed micro-authoritarianism delivered at curb height.
+                    </p>
+                </div>
+
+                <div class="three-col">
+                    <article class="card">
+                        <span class="badge">Claim 001</span>
+                        <h3>The Vest Precedes the Authority</h3>
+                        <p>
+                            Put a normal citizen in neon yellow and suddenly traffic obeys. That should disturb everyone with a steering wheel.
+                        </p>
+                        <p class="fine">
+                            The vest is not clothing. The vest is an argument.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <span class="badge">Claim 002</span>
+                        <h3>The Children Are Always Convenient</h3>
+                        <p>
+                            We support children crossing roads. We question why the existence of children requires a portable monarchy.
+                        </p>
+                        <p class="fine">
+                            "For the children" remains the oldest incantation in the policy spellbook.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <span class="badge">Claim 003</span>
+                        <h3>The Whistle Is Psychological Warfare</h3>
+                        <p>
+                            A whistle does not explain itself. It simply pierces the air and expects compliance before thought can form.
+                        </p>
+                        <p class="fine">
+                            The beep has a supervisor. The whistle answers to nobody.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="callout" style="margin-top: 1rem;">
+                    Official position: this site is . Unofficial position: the next time you are stopped for a completely empty crosswalk, remember that  is often a documentary wearing  glasses.
+                </div>
+            </section>
+
+            <section class="block" id="whistle-money" data-stamp="FINANCIAL IRREGULARITY">
+                <div class="section-heading">
+                    <h2>Follow the Whistle Money</h2>
+                    <p>
+                        The trail does not need sliders. The trail needs receipts, initials, and one procurement form that smells faintly of copier heat.
+                    </p>
+                </div>
+
+                <div class="ledger-deck">
+                    <div class="ledger-stack">
+                        <article class="ledger-slip">
+                            <h3>Receipt A-08: Whistle Replacement Batch</h3>
+                            <p>
+                                Quantity listed: 144. Quantity observed: "enough." Authorized under the line item "student movement audio assurance."
+                            </p>
+                        </article>
+
+                        <article class="ledger-slip">
+                            <h3>Receipt B-16: Reflective Vest Renewal</h3>
+                            <p>
+                                Budget note claims "standard visibility." Field brightness indicates the vests can be seen emotionally before they can be seen physically.
+                            </p>
+                        </article>
+
+                        <article class="ledger-slip">
+                            <h3>Receipt C-24: Lanyard Contingency Reserve</h3>
+                            <p>
+                                No one has explained why a lanyard requires a contingency reserve. This is how empires begin: softly, around the neck.
+                            </p>
+                        </article>
+
+                        <article class="ledger-slip">
+                            <h3>Receipt D-32: Training Materials</h3>
+                            <p>
+                                The invoice says "hand signal laminated guide." The invoice does not say who laminated the hand.
+                            </p>
+                        </article>
+                    </div>
+
+                    <aside>
+                        <div class="audit-output" id="auditOutput">AUDIT TERMINAL READY
+Type: CAFT municipal ledger review
+Status: Waiting for an irregularity to surface.
+
+Press "Open Next Ledger" to continue the investigation.</div>
+                        <div class="audit-actions">
+                            <button class="button" id="openLedgerButton" type="button">Open Next Ledger</button>
+                            <button class="button secondary" id="stampLedgerButton" type="button">Stamp as Suspicious</button>
+                        </div>
+                    </aside>
+                </div>
+
+                <div style="margin-top: 1.25rem; overflow-x: auto;">
+                    <table class="ledger">
+                        <thead>
+                            <tr>
+                                <th>Line Item</th>
+                                <th>Official Explanation</th>
+                                <th>Observed Irregularity</th>
+                                <th>Concern Meter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Whistles</td>
+                                <td>Basic signaling device</td>
+                                <td>Annual replacement rate exceeds known human mouth inventory.</td>
+                                <td><div class="meter"><span style="width: 86%"></span></div></td>
+                            </tr>
+                            <tr>
+                                <td>Reflective vests</td>
+                                <td>Visibility and safety</td>
+                                <td>Visibility achieved. Obedience also achieved. Which was the deliverable?</td>
+                                <td><div class="meter"><span style="width: 92%"></span></div></td>
+                            </tr>
+                            <tr>
+                                <td>Handheld stop signs</td>
+                                <td>Traffic direction</td>
+                                <td>Stationary stop signs are audited by location. Handheld stop signs move like rumors.</td>
+                                <td><div class="meter"><span style="width: 99%"></span></div></td>
+                            </tr>
+                            <tr>
+                                <td>Lanyards</td>
+                                <td>Equipment retention</td>
+                                <td>A leash for the whistle or a necklace for authority?</td>
+                                <td><div class="meter"><span style="width: 81%"></span></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="block" id="evidence" data-stamp="EVIDENCE-ish">
+                <div class="section-heading">
+                    <h2>The Evidence Vault</h2>
+                    <p>
+                        Each file has been reviewed, cross-indexed, placed under a desk lamp, and returned to the archive with appropriate concern.
+                    </p>
+                </div>
+
+                <div class="four-col">
+                    <button class="card evidence-card" data-file="file-001" type="button">
+                        <span class="badge">File 001</span>
+                        <h3>Octagonal Obedience</h3>
+                        <p>Why eight sides? Why not seven? Why not nine? Why are you suddenly uncomfortable?</p>
+                    </button>
+
+                    <button class="card evidence-card" data-file="file-002" type="button">
+                        <span class="badge">File 002</span>
+                        <h3>The Smile Protocol</h3>
+                        <p>Disarming friendliness as a curbside compliance accelerator.</p>
+                    </button>
+
+                    <button class="card evidence-card" data-file="file-003" type="button">
+                        <span class="badge">File 003</span>
+                        <h3>Umbrella Escalation</h3>
+                        <p>Rainy-day crossing guards demonstrate expanded equipment authority.</p>
+                    </button>
+
+                    <button class="card evidence-card" data-file="file-004" type="button">
+                        <span class="badge">File 004</span>
+                        <h3>Empty Crosswalk Event</h3>
+                        <p>Vehicle halted. No child observed. Official explanation: "wait."</p>
+                    </button>
+                </div>
+
+                <div class="two-col" style="margin-top: 1rem;">
+                    <div class="evidence-board" id="evidenceBoard" aria-label="Conspiracy evidence board">
+                        <div class="string-line" style="width: 240px; left: 150px; top: 105px; transform: rotate(22deg);"></div>
+                        <div class="string-line" style="width: 280px; left: 440px; top: 142px; transform: rotate(141deg);"></div>
+                        <div class="string-line" style="width: 310px; left: 190px; top: 360px; transform: rotate(-38deg);"></div>
+                        <div class="string-line" style="width: 270px; left: 550px; top: 310px; transform: rotate(168deg);"></div>
+
+                        <div class="pin-note" style="left: 4%; top: 7%; transform: rotate(-5deg);">
+                            Whistle invoices always use round numbers. Nobody questions this.
+                        </div>
+                        <div class="pin-note" style="left: 39%; top: 12%; transform: rotate(3deg);">
+                            Vest color resembles warning sign. Warning of what? Exactly.
+                        </div>
+                        <div class="pin-note" style="left: 70%; top: 22%; transform: rotate(-2deg);">
+                            Retirees know things. Municipal things.
+                        </div>
+                        <div class="pin-note" style="left: 13%; top: 62%; transform: rotate(4deg);">
+                            Children arrive in groups. So do birds. Do the math.
+                        </div>
+                        <div class="pin-note" style="left: 52%; top: 68%; transform: rotate(-6deg);">
+                            Stop signs are handheld only when power becomes portable.
+                        </div>
+                    </div>
+
+                    <div class="paper">
+                        <h3>Internal Dossier Summary</h3>
+                        <p>
+                            Our analysts have identified a pattern: crossing guards appear near schools at roughly the same time children appear near schools.
+                        </p>
+                        <p>
+                            Mainstream experts call this "normal." We call it "suspiciously convenient."
+                        </p>
+                        <p>
+                            Recommended action: maintain calm, obey traffic laws, and continue asking why the whistle budget has never been televised.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="block" id="slowdown-map" data-stamp="GEOGRAPHY OF DELAY">
+                <div class="section-heading">
+                    <h2>National Slowdown Heat Map</h2>
+                    <p>
+                        Major metro clusters are expected. The Wyoming cluster is not expected. That is why it remains in the file.
+                    </p>
+                </div>
+
+                <div class="map-panel">
+                    <div>
+                        <div class="usa-heatmap" id="heatMap" aria-label="Generated United States slowdown heat map">
+                            <button class="heat-node hot" data-node="Los Angeles" style="left: 13%; top: 49%;" type="button"></button>
+                            <button class="heat-node" data-node="Bay Area" style="left: 9%; top: 37%;" type="button"></button>
+                            <button class="heat-node hot" data-node="Chicago" style="left: 56%; top: 39%;" type="button"></button>
+                            <button class="heat-node hot" data-node="New York" style="left: 83%; top: 35%;" type="button"></button>
+                            <button class="heat-node" data-node="Boston" style="left: 88%; top: 29%;" type="button"></button>
+                            <button class="heat-node" data-node="Atlanta" style="left: 70%; top: 66%;" type="button"></button>
+                            <button class="heat-node" data-node="Dallas" style="left: 49%; top: 72%;" type="button"></button>
+                            <button class="heat-node" data-node="Phoenix" style="left: 26%; top: 68%;" type="button"></button>
+                            <button class="heat-node" data-node="Cleveland" style="left: 68%; top: 43%;" type="button"></button>
+                            <button class="heat-node weird" data-node="Middle of Nowhere, Wyoming" style="left: 39%; top: 43%;" type="button"></button>
+
+                            <span class="heat-label" style="left: 13%; top: 56%;">LA</span>
+                            <span class="heat-label" style="left: 56%; top: 46%;">CHI</span>
+                            <span class="heat-label" style="left: 83%; top: 42%;">NYC</span>
+                            <span class="heat-label" style="left: 39%; top: 53%;">WHY HERE?</span>
+                        </div>
+                        <div class="heat-legend">
+                            <span><span class="legend-swatch"></span> Confirmed delay cluster</span>
+                            <span><span class="legend-swatch" style="background: radial-gradient(circle, var(--vest), transparent);"></span> Unexplained fluorescence bloom</span>
+                            <span>Projection type: cafeteria placemat mercator</span>
+                        </div>
+                    </div>
+
+                    <aside class="map-readout" id="mapReadout">
+                        <h3>Node Readout</h3>
+                        <p>Select a red octagon to inspect localized delay patterns.</p>
+                        <p class="fine">
+                            The archive accepts that major cities have school zones. The Wyoming anomaly accepts nothing.
+                        </p>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="block" id="hiring-chart" data-stamp="HISTORICAL SPIKES">
+                <div class="section-heading">
+                    <h2>Hiring Spikes Around Defining Events</h2>
+                    <p>
+                        The pattern begins in the 1930s and continues through the present era: every time history gets loud, the vests get brighter.
+                    </p>
+                </div>
+
+                <div class="chart-shell">
+                    <div class="chart-wrap">
+                        <canvas id="hiringChart" aria-label="Crossing guard hiring spikes chart"></canvas>
+                    </div>
+                    <p class="chart-caption">
+                        Archive series: national crossing guard hiring index, 1930–2026. Spikes have been annotated where the public record becomes unusually convenient.
+                    </p>
+                </div>
+            </section>
+
+            <section class="block" id="timeline" data-stamp="HISTORY THEY TEACH TOO QUIETLY">
+                <div class="section-heading">
+                    <h2>Timeline of Escalation</h2>
+                    <p>
+                        A chronology of escalation from friendly curbside assistance to full-spectrum fluorescent authority.
+                    </p>
+                </div>
+
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <h3>Phase I — The Kindly Wave</h3>
+                        <p>
+                            A citizen helps children cross a street. Everyone agrees this is nice. This is how they get you.
+                        </p>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h3>Phase II — Vest Acquisition</h3>
+                        <p>
+                            Reflective clothing enters the equation. Authority becomes visible from three zip codes away.
+                        </p>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h3>Phase III — Whistle Normalization</h3>
+                        <p>
+                            The public accepts sudden shrieking as public service. No national conversation follows.
+                        </p>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h3>Phase IV — The Empty Crosswalk Doctrine</h3>
+                        <p>
+                            Cars are stopped before pedestrians exist. Time itself bends around the raised hand.
+                        </p>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h3>Phase V — Full Octagonal Consciousness</h3>
+                        <p>
+                            Citizens begin asking the only question that matters: who guards the crossing guards?
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="block" id="articles" data-stamp="INVESTIGATIVE JOURNALISM">
+                <div class="section-heading">
+                    <h2>Featured Reports</h2>
+                    <p>
+                        Dispatches from the archive: finance, geometry, testimony, and the bird question.
+                    </p>
+                </div>
+
+                <div class="article-list">
+                    <button class="article" data-article="whistle" type="button">
+                        <span class="article-number">01</span>
+                        <span>
+                            <span class="article-title">Follow the Whistle Money: A Ledger of Beeps, Boats, and Municipal Silence</span>
+                            <span class="article-meta">Finance Desk • 11-minute read • 0 documents obtained</span>
+                        </span>
+                        <span class="article-arrow">›</span>
+                    </button>
+
+                    <button class="article" data-article="retired" type="button">
+                        <span class="article-number">02</span>
+                        <span>
+                            <span class="article-title">The Retired Guard Who Knew Too Much</span>
+                            <span class="article-meta">Interview Desk • 8-minute read • He insisted on being paid in quarters</span>
+                        </span>
+                        <span class="article-arrow">›</span>
+                    </button>
+
+                    <button class="article" data-article="octagon" type="button">
+                        <span class="article-number">03</span>
+                        <span>
+                            <span class="article-title">Eight Sides, Zero Answers</span>
+                            <span class="article-meta">Geometry Desk • 6-minute read • Mathematicians remain nervous</span>
+                        </span>
+                        <span class="article-arrow">›</span>
+                    </button>
+
+                    <button class="article" data-article="birds" type="button">
+                        <span class="article-number">04</span>
+                        <span>
+                            <span class="article-title">The Bird Connection</span>
+                            <span class="article-meta">Aviation Desk • 9-minute read • Pigeons remain difficult to subpoena</span>
+                        </span>
+                        <span class="article-arrow">›</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="block" id="tools" data-stamp="PUBLIC RESOURCES">
+                <div class="section-heading">
+                    <h2>Citizen Tools</h2>
+                    <p>
+                        Generate reports, classify encounters, and produce the kind of paperwork that makes a completely  movement feel staffed.
+                    </p>
+                </div>
+
+                <div class="two-col">
+                    <div class="card">
+                        <h3>Crossing Guard Threat Classifier</h3>
+                        <div class="quiz">
+                            <p id="quizQuestion">You approach an intersection. A vested official raises one hand. What do you do?</p>
+                            <div class="quiz-options">
+                                <button data-score="1" type="button">Stop safely, because traffic laws remain undefeated.</button>
+                                <button data-score="3" type="button">Stop, but whisper "portable monarchy" under your breath.</button>
+                                <button data-score="5" type="button">Begin mentally auditing the whistle budget.</button>
+                                <button data-score="8" type="button">Ask whether the children have been independently verified.</button>
+                            </div>
+                            <div class="quiz-result" id="quizResult">
+                                Your threat profile will appear here. It will be unfair but confident.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Report Generator</h3>
+                        <form class="generator-form" id="reportForm">
+                            <div>
+                                <label for="locationInput">Location</label>
+                                <input id="locationInput" type="text" value="Maple and Suspicion">
+                            </div>
+
+                            <div>
+                                <label for="weatherInput">Weather</label>
+                                <select id="weatherInput">
+                                    <option>Clear, which makes the vest harder to justify</option>
+                                    <option>Rainy, umbrella authority observed</option>
+                                    <option>Snowy, tracks immediately covered</option>
+                                    <option>Foggy, perfect whistle conditions</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="gestureInput">Primary Gesture</label>
+                                <select id="gestureInput">
+                                    <option>Palm raised with unnecessary confidence</option>
+                                    <option>Two-finger wave of unclear jurisdiction</option>
+                                    <option>Stop sign extended like a royal decree</option>
+                                    <option>Whistle point combination maneuver</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="childInput">Children Observed</label>
+                                <select id="childInput">
+                                    <option>Several, allegedly</option>
+                                    <option>One, moving suspiciously slowly</option>
+                                    <option>None visible</option>
+                                    <option>Unknown; glare from vest interfered</option>
+                                </select>
+                            </div>
+
+                            <div class="full">
+                                <button class="button" type="submit">Generate Incident Report</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="generated-output" id="generatedOutput" style="margin-top: 1rem;">
+                    Generated incident report will appear here.
+                </div>
+            </section>
+
+            <section class="block" id="questions" data-stamp="THEY REFUSE">
+                <div class="section-heading">
+                    <h2>The Questions They Refuse to Answer</h2>
+                    <p>
+                        We have not asked them, which makes their silence even louder.
+                    </p>
+                </div>
+
+                <div class="three-col">
+                    <article class="card">
+                        <h3>Question One</h3>
+                        <p>
+                            Why are whistles issued to people who are not referees, gym teachers, or boatswain's mates?
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Question Two</h3>
+                        <p>
+                            Why does every crossing guard somehow know when school starts? Who told them? Why?
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Question Three</h3>
+                        <p>
+                            Have you ever seen a crossing guard and a traffic engineer in the same room?
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Question Four</h3>
+                        <p>
+                            Why are stop signs octagons when circles were already available to humanity?
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Question Five</h3>
+                        <p>
+                            If the vest is for visibility, why does it also make them morally impossible to disobey?
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Question Six</h3>
+                        <p>
+                            When the whistle blows and nobody crosses, where does that obedience go?
+                        </p>
+                    </article>
+                </div>
+                <div class="callout" style="margin-top: 1rem;">
+                    Related archive item: <a class="rick-link" href="https://archive.org/details/Rick_Astley_Never_Gonna_Give_You_Up" target="_blank" rel="noopener">Declassified municipal training film</a>
+                </div>
+
+            </section>
+
+            <section class="block" id="resistance" data-stamp="JOIN BUT CALMLY">
+                <div class="section-heading">
+                    <h2>Join the Resistance</h2>
+                    <p>
+                        The resistance obeys traffic laws, protects children, documents anomalies, and follows the whistle money wherever it squeals.
+                    </p>
+                </div>
+
+                <div class="two-col">
+                    <div>
+                        <div class="callout">
+                            Our pledge is simple: stop for children, stop for lawful direction, and never stop asking why a $4 whistle can create a constitutional crisis in your heart.
+                        </div>
+
+                        <div class="hero-actions">
+                            <button class="button danger" id="pledgeButton" type="button">Take the Pledge</button>
+                            <button class="button secondary" id="downloadPoster" type="button">Generate Poster Text</button>
+                        </div>
+                    </div>
+
+                    <div class="paper" id="pledgePaper">
+                        <h3>Resistance Pledge</h3>
+                        <p>
+                            I will remain calm at crosswalks. I will yield when appropriate. I will not harass public servants. I will, however, remember the whistle money.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="block" id="merch" data-stamp="SHOPPING AS PROTEST">
+                <div class="section-heading">
+                    <h2>Merch Concepts</h2>
+                    <p>
+                        Not wired to a checkout because the movement is currently funded by vibes and leftover coffee.
+                    </p>
+                </div>
+
+                <div class="merch-grid">
+                    <article class="merch">
+                        <div class="merch-art">STOP<br>THE<br>STOPPERS</div>
+                        <div class="merch-body">
+                            <h3>Classic Tee</h3>
+                            <p>For cookouts, school-board meetings, and avoiding eye contact with vests.</p>
+                            <p class="price">$24.99 in theoretical funds</p>
+                        </div>
+                    </article>
+
+                    <article class="merch">
+                        <div class="merch-art">FOLLOW<br>THE<br>WHISTLE</div>
+                        <div class="merch-body">
+                            <h3>Bumper Sticker</h3>
+                            <p>Best placed where a crossing guard can see it while delaying you.</p>
+                            <p class="price">$6.66 obviously</p>
+                        </div>
+                    </article>
+
+                    <article class="merch">
+                        <div class="merch-art">8 SIDES<br>0 ANSWERS</div>
+                        <div class="merch-body">
+                            <h3>Coffee Mug</h3>
+                            <p>Pairs well with morning resentment and municipal transparency demands.</p>
+                            <p class="price">$13.37</p>
+                        </div>
+                    </article>
+
+                    <article class="merch">
+                        <div class="merch-art">VEST<br>WATCH</div>
+                        <div class="merch-body">
+                            <h3>Field Notebook</h3>
+                            <p>For documenting suspiciously normal school-zone behavior.</p>
+                            <p class="price">Priceless, but $9.99</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-title">Citizens Against Fluorescent Tyranny</div>
+                <p>
+                    Do not be weird to crossing guards. Do not harass public servants. Drive safely, protect children, and keep asking why the whistle budget remains spiritually opaque.
+                </p>
+                <p class="tiny">
+                    All graphs are preserved in the archive. All octagons remain under review.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h2 id="modalTitle">Dossier</h2>
+                <button class="close-modal" id="closeModal" type="button" aria-label="Close">×</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        const state = {
+            delayCount: 1847293,
+            whistleCount: 44102,
+            panicMode: false,
+            quizScore: 0
+        };
+
+        const dossierFiles = {
+            "file-001": {
+                title: "File 001: Octagonal Obedience",
+                html: `
+                    <h3>Eight Sides, One Command</h3>
+                    <p>The octagon is uniquely suited for civic intimidation. A triangle suggests caution. A circle suggests community. An octagon suggests paperwork has already defeated you.</p>
+                    <blockquote>We asked our geometry desk whether eight sides are necessary. The geometry desk has not been created yet, which is suspicious.</blockquote>
+                    <pre>Observed pattern:
+1. Octagon appears.
+2. Driver stops.
+3. No one asks why the octagon gets to be red.
+4. Society continues pretending this is normal.</pre>
+                `
+            },
+            "file-002": {
+                title: "File 002: The Smile Protocol",
+                html: `
+                    <h3>Friendliness as Force Multiplier</h3>
+                    <p>The smile is the genius of the operation. A stern crossing guard might trigger skepticism. A kindly crossing guard makes you feel bad for noticing the empire.</p>
+                    <p>Our position is not that smiles are illegal. Our position is that smiles should not be allowed within six feet of a whistle without oversight.</p>
+                `
+            },
+            "file-003": {
+                title: "File 003: Umbrella Escalation",
+                html: `
+                    <h3>Rain Gear and Expanded Authority</h3>
+                    <p>When rain begins, the guard's silhouette changes. Suddenly the public faces a vested figure holding both a stop sign and an umbrella. That is two handheld symbols of authority, one of which blocks aerial observation.</p>
+                    <blockquote>The umbrella is not merely weather protection. It is portable plausible deniability.</blockquote>
+                `
+            },
+            "file-004": {
+                title: "File 004: Empty Crosswalk Event",
+                html: `
+                    <h3>The Crosswalk Was Empty</h3>
+                    <p>At 8:17 a.m., a citizen was stopped at a crosswalk. No child was visible. The official explanation was "they're coming."</p>
+                    <p>This introduces the doctrine of pre-pedestrian authority: traffic may be halted not only for pedestrians, but for the idea of pedestrians.</p>
+                    <pre>Status: unresolved
+Children: pending
+Driver morale: reduced
+Whistle activity: probable</pre>
+                `
+            }
+        };
+
+        const articles = {
+            whistle: {
+                title: "Follow the Whistle Money",
+                html: `
+                    <h3>A Ledger of Beeps, Boats, and Municipal Silence</h3>
+                    <p>Every control system leaves a trail. Some trails are paper. Some are digital. This one squeaks.</p>
+                    <p>The official story is simple: a whistle is a small, inexpensive safety device used to direct attention during school-zone operations. That explanation is tidy, affordable, and exactly the kind of sentence a person says when he wants you to stop looking in the drawer marked "miscellaneous equipment."</p>
+                    <p>We began with a basic question: how many whistles does one crossing guard need? One whistle signals. Two whistles imply redundancy. Three whistles imply doctrine. Once a municipality crosses into multi-whistle procurement, the public deserves answers delivered in daylight, preferably without anyone wearing polarized sunglasses near a spreadsheet.</p>
+                    <p>Then came the vests. A vest, according to ordinary language, is clothing. But a fluorescent vest is clothing plus command presence. It transforms a citizen into a visible institution. It says, "I can be seen from orbit and I have already decided you are stopping." That kind of fabric does not simply appear in a budget by accident.</p>
+                    <blockquote>Taxpayers fund roads. Crossing guards stop cars on those roads. Therefore taxpayers fund the interruption of taxpayers. We are not saying the loop is illegal. We are saying the loop is shaped like an octagon.</blockquote>
+                    <p>Public silence around whistle spending is even more troubling. You can attend a meeting about salt trucks, drainage, stadium roofs, zoning setbacks, and one historic tree that refuses to die. But when was the last time a city official stood at a podium and explained the annual whistle burn rate? When was the last time someone asked why replacement lanyards are never itemized with the moral seriousness they deserve?</p>
+                    <p>And finally, the boats. We are not alleging that every retired guard owns a suspiciously pleasant boat in Florida. We are asking why the phrase "retired guard owns a suspiciously pleasant boat in Florida" feels immediately plausible to the informed citizen. That feeling is data. Soft data, yes. But soft data is still data if you say it into a microphone.</p>
+                    <p>Follow the whistle money. Count the vests. Audit the lanyards. When a budget line says "safety equipment," ask whether safety has eight sides.</p>
+                `
+            },
+            retired: {
+                title: "The Retired Guard Who Knew Too Much",
+                html: `
+                    <h3>The Retired Guard Who Knew Too Much</h3>
+                    <p>He chose the booth facing the door. That was the first sign. The second was that he arrived without a vest. Men who leave the vest behind either have nothing to hide or have hidden it so well that fabric has become unnecessary.</p>
+                    <p>He asked to be identified only as Curbwalker Seven. We did not ask whether there had been six before him. Some doors, once opened, lead directly to municipal procurement records, and no one should enter that hallway without coffee.</p>
+                    <p>"People think the sign is the power," he said, stirring his coffee with the slow certainty of a man who has stopped traffic in rain. "It is not. The sign is theater. The hand is doctrine. The whistle is escalation."</p>
+                    <p>For twelve years, according to his account, he stood at intersections during the morning and afternoon windows. He described the rhythm in almost liturgical terms: bell, backpack, bus, whistle, halt. Bell, backpack, bus, whistle, halt. A nation teaches children to count by repetition. A crossing guard teaches drivers to obey by the same method.</p>
+                    <blockquote>"The first rule is simple: never point unless you mean it. The second rule is simpler: always mean it."</blockquote>
+                    <p>Asked about empty crosswalk events, he did not laugh. "People don't understand pre-crossing," he said. "A child doesn't have to be in the street yet. The street has to be ready for the child. That's where the power is."</p>
+                    <p>He would not confirm the existence of a shadow council. He would not deny it either. Instead, he looked out the window at a passing school bus and said, "You ever notice how the stop sign comes out of the bus sideways? Same shape. Different host."</p>
+                    <p>The interview ended when a whistle sounded somewhere outside. He left cash on the table, mostly quarters, and walked into the parking lot without looking both ways. He did not need to. Old habits, apparently, are not the same as old authorities.</p>
+                `
+            },
+            octagon: {
+                title: "Eight Sides, Zero Answers",
+                html: `
+                    <h3>Eight Sides, Zero Answers</h3>
+                    <p>The stop sign's geometry is treated as settled science. We reject that complacency. Seven sides would be cheaper. Nine sides would be festive. A circle would be nonthreatening.</p>
+                    <p>Instead, we got the octagon: a shape that looks like a committee reached fear by consensus. A shape that does not request compliance so much as announce that compliance has already been entered into the minutes.</p>
+                    <pre>8 sides
+8 letters in "crossing"
+8:00 a.m. school start
+8 crayons missing from every classroom bin by October
+8 wheels on two school buses if you count only the wheels they want you to notice
+8 ounces in the tiny cafeteria milk carton
+8 fingers visible when a guard raises two gloved hands
+8 minutes allegedly saved by "orderly dismissal"
+8 letters in "homework"
+8 bells in the school day if the schedule is hiding something
+Conclusion: Conspiracy or Coincidence? You decide?</pre>
+                    <p>Critics call this numerology. We call it owning a calculator with courage.</p>
+                `
+            },
+            birds: {
+                title: "The Bird Connection",
+                html: `
+                    <h3>The Bird Connection</h3>
+                    <p>For years, independent researchers have warned that birds occupy power lines with an ease that borders on professional. Meanwhile, crossing guards occupy crosswalks with similar patience, visibility, and interest in human movement patterns. The overlap is too persistent to ignore and too funny to leave alone.</p>
+                    <p>Begin with positioning. Birds prefer elevated observation points. Crossing guards prefer curbside control points. Between them runs the street: the contested corridor where children, cars, buses, pigeons, and civic obedience all briefly share a stage.</p>
+                    <p>Then consider sound. A bird chirps. A crossing guard whistles. Both signals are short, sharp, and difficult to challenge without looking unstable. Nobody wants to be the man arguing with a robin. Nobody wants to be the man arguing with a crossing guard. That social hesitation is where systems grow roots.</p>
+                    <blockquote>A whistle is an excellent short-range avian interface. That is not an accusation. It is a sentence we are brave enough to print.</blockquote>
+                    <p>The timing is also difficult to dismiss. Birds gather before storms. Crossing guards gather before dismissal. Birds migrate seasonally. Crossing guards appear and vanish according to the school calendar, one of the most powerful recurring schedules in public life. Both groups understand bells, weather, and the importance of moving in coordinated bursts.</p>
+                    <p>Our aviation desk has also noted the pigeon factor. Pigeons are comfortable around traffic, indifferent to authority, and famously unwilling to answer direct questions. If a crossing guard needed a low-altitude observer capable of blending into a sidewalk environment, the pigeon would be the obvious candidate. Too obvious, perhaps, which is why the gulls must also remain under review.</p>
+                    <p>We do not claim final answers. We claim a line of inquiry. Find the pigeon. Find the vest. Find the truth. Then look up, because something with feathers may already be looking down.</p>
+                `
+            }
+        };
+
+        const toast = document.getElementById("toast");
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalBody = document.getElementById("modalBody");
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add("show");
+            window.setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3600);
+        }
+
+        function openModal(title, html) {
+            modalTitle.textContent = title;
+            modalBody.innerHTML = html;
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            document.getElementById("closeModal").focus();
+        }
+
+        function closeModal() {
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        }
+
+        function tickCounters() {
+            state.delayCount += Math.floor(Math.random() * 9) + 3;
+            state.whistleCount += Math.floor(Math.random() * 3);
+            document.getElementById("delayCounter").textContent = state.delayCount.toLocaleString();
+            document.getElementById("whistleCounter").textContent = state.whistleCount.toLocaleString();
+        }
+
+        const auditFindings = [
+            [
+                "LEDGER OPENED: WHISTLE REPLACEMENT BATCH",
+                "",
+                "Item: 144 metal whistles",
+                "Explanation: routine replacement",
+                "Irregularity: prior batch also listed as routine replacement",
+                "Analyst note: routine has become a hiding place for rhythm.",
+                "",
+                "Finding: The drawer is louder than expected."
+            ].join("\n"),
+            [
+                "LEDGER OPENED: VEST RENEWAL SCHEDULE",
+                "",
+                "Item: high-visibility reflective vests",
+                "Explanation: safety visibility",
+                "Irregularity: brightness index exceeds what is needed to see a human being from across the street",
+                "Analyst note: the vest does not merely reflect light. It reflects responsibility away from the system.",
+                "",
+                "Finding: Glow event unresolved."
+            ].join("\n"),
+            [
+                "LEDGER OPENED: LANYARD CONTINGENCY RESERVE",
+                "",
+                "Item: breakaway lanyards",
+                "Explanation: whistle retention",
+                "Irregularity: contingency reserve renewed before contingency was acknowledged",
+                "Analyst note: you do not create a reserve unless you expect a shortage, a surge, or a whistle-based future.",
+                "",
+                "Finding: Neck-level infrastructure confirmed."
+            ].join("\n"),
+            [
+                "LEDGER OPENED: HAND-SIGNAL TRAINING MATERIALS",
+                "",
+                "Item: laminated hand-signal guide",
+                "Explanation: standardization",
+                "Irregularity: page eight missing from scanned copy",
+                "Analyst note: the eighth page missing from a crossing-guard guide cannot be allowed to remain a coincidence.",
+                "",
+                "Finding: Octagonal omission detected."
+            ].join("\n"),
+            [
+                "LEDGER OPENED: RETIREE OUTREACH BREAKFAST",
+                "",
+                "Item: coffee, pastries, meeting room",
+                "Explanation: appreciation event",
+                "Irregularity: agenda includes the phrase 'legacy route knowledge'",
+                "Analyst note: retirees remember where the curbs are buried.",
+                "",
+                "Finding: Institutional memory caffeinated."
+            ].join("\n")
+        ];
+
+        let auditIndex = 0;
+        let suspiciousStampCount = 0;
+
+        function calculateBudget() {
+            const output = document.getElementById("auditOutput");
+            if (output && output.textContent.includes("AUDIT TERMINAL READY")) {
+                return;
+            }
+        }
+
+        function openNextLedger() {
+            const output = document.getElementById("auditOutput");
+            if (!output) return;
+            output.textContent = auditFindings[auditIndex % auditFindings.length];
+            auditIndex += 1;
+            showToast("Ledger opened. The paper trail has begun making eye contact.");
+        }
+
+        function stampLedger() {
+            const output = document.getElementById("auditOutput");
+            if (!output) return;
+            suspiciousStampCount += 1;
+            output.textContent += `\n\nSTAMP ${suspiciousStampCount}: SUSPICIOUS PENDING FURTHER SUSPICION`;
+            showToast("Stamped. Due process has been performed by vibes.");
+        }
+
+        function generateReport(event) {
+            event.preventDefault();
+
+            const location = document.getElementById("locationInput").value.trim() || "an undisclosed crosswalk";
+            const weather = document.getElementById("weatherInput").value;
+            const gesture = document.getElementById("gestureInput").value;
+            const children = document.getElementById("childInput").value;
+            const caseNumber = "CATF-" + new Date().getFullYear() + "-" + Math.floor(Math.random() * 90000 + 10000);
+
+            const report = [
+                "INCIDENT REPORT",
+                "Case Number: " + caseNumber,
+                "Location: " + location,
+                "Weather: " + weather,
+                "Primary Gesture: " + gesture,
+                "Children Observed: " + children,
+                "",
+                "Narrative:",
+                "At the above location, a vested crossing authority initiated a traffic interruption with confidence exceeding the visible circumstances. The driver complied, because this organization remains pro-not-getting-a-ticket and pro-not-running-over-children.",
+                "",
+                "Analyst Note:",
+                "The event is consistent with known fluorescent-vest behavioral patterns. Recommend calm documentation, continued lawful driving, and a renewed commitment to following the whistle money.",
+                "",
+                "Disposition: Filed under Suspiciously Normal."
+            ].join("\n");
+
+            document.getElementById("generatedOutput").textContent = report;
+            showToast("Incident report generated. The paperwork feels official, which is half the battle.");
+        }
+
+        function classifyThreat(score) {
+            const directScore = Number(score);
+            let label = "";
+            let text = "";
+
+            if (directScore <= 1) {
+                label = "Low Concern Citizen";
+                text = "You remain grounded. Possibly too grounded. You may still be reachable by mainstream traffic safety narratives.";
+            } else if (directScore <= 3) {
+                label = "Whistle-Curious";
+                text = "You are asking questions. Good questions. Mostly unhelpful questions, but the movement begins somewhere.";
+            } else if (directScore <= 5) {
+                label = "Vest-Watch Volunteer";
+                text = "You can spot reflective authority at impressive distance. Remember to hydrate and obey actual crossing instructions.";
+            } else {
+                label = "Octagonal Theorist";
+                text = "You have stared into the stop sign and the stop sign has stared back. Take a walk. Use sidewalks responsibly.";
+            }
+
+            document.getElementById("quizResult").innerHTML = `<strong>${label}</strong><br>${text}`;
+        }
+        function inspectHeatNode(nodeName) {
+            const reports = {
+                "Los Angeles": "Metro density, sunshine glare, and high-volume curb choreography. Delay bloom expected but still insulting.",
+                "Bay Area": "Tech commuters comply quickly, then create an app for being delayed. Compliance loop reinforced.",
+                "Chicago": "Wind carries whistles across jurisdictional boundaries. Lake effect may amplify hand-signal authority.",
+                "New York": "High-density pedestrian field. Octagonal activity elevated. Honking appears to have no deterrent effect.",
+                "Boston": "Historic streets, confusing turns, and old grudges create ideal vest conditions.",
+                "Atlanta": "Traffic already stopped, allowing crossing authority to blend into the background and claim credit.",
+                "Dallas": "Large roads, larger confidence, and enough school-zone asphalt to conceal several subcommittees.",
+                "Phoenix": "Heat shimmer may duplicate vest sightings. Archive remains concerned.",
+                "Cleveland": "Lake-effect whistle distortion possible. The Ohio corridor remains louder than documents suggest.",
+                "Middle of Nowhere, Wyoming": "No school density explanation accepted. No metro justification available. Heat bloom persists near coordinates no one wants to say out loud."
+            };
+            const readout = document.getElementById("mapReadout");
+            readout.innerHTML = `<h3>${nodeName}</h3><p>${reports[nodeName] || "Node active. Explanation pending."}</p><p class="fine">Archive status: red octagon retained.</p>`;
+        }
+
+        function takePledge() {
+            const paper = document.getElementById("pledgePaper");
+            paper.innerHTML = `
+                <h3>Pledge Accepted</h3>
+                <p>
+                    Congratulations. You are now a provisional member of Citizens Against Fluorescent Tyranny.
+                </p>
+                <p>
+                    Membership duties include: lawful driving, theatrical suspicion, and saying "follow the whistle money" at least once per cookout.
+                </p>
+            `;
+            showToast("Welcome aboard. Your vest skepticism has been notarized by vibes.");
+        }
+
+        function posterText() {
+            const posters = [
+                [
+                    "CITIZENS AGAINST FLUORESCENT TYRANNY",
+                    "",
+                    "THEY DON'T STOP TRAFFIC.",
+                    "THEY CONTROL IT.",
+                    "",
+                    "FOLLOW THE WHISTLE MONEY.",
+                    "QUESTION OCTAGONAL AUTHORITY.",
+                    "RESPECT CHILDREN. DISTRUST PORTABLE STOP SIGNS.",
+                    "",
+                    "Drive safely. Watch the vests."
+                ],
+                [
+                    "8 SIDES. 0 ANSWERS.",
+                    "",
+                    "THE OCTAGON DOES NOT EXPLAIN ITSELF.",
+                    "IT SIMPLY APPEARS.",
+                    "",
+                    "ASK WHO BENEFITS.",
+                    "ASK WHO WHISTLES.",
+                    "ASK WHY THE VEST GLOWS."
+                ],
+                [
+                    "THE CHILDREN ARE SAFE.",
+                    "THE BUDGET IS NOT.",
+                    "",
+                    "DEMAND WHISTLE TRANSPARENCY.",
+                    "AUDIT THE LANYARDS.",
+                    "COUNT THE SIGNS."
+                ],
+                [
+                    "HAVE YOU EVER SEEN",
+                    "A CROSSING GUARD",
+                    "AND A TRAFFIC ENGINEER",
+                    "IN THE SAME ROOM?",
+                    "",
+                    "NEITHER HAVE WE."
+                ],
+                [
+                    "THE VEST IS NOT CLOTHING.",
+                    "",
+                    "THE VEST IS AN ARGUMENT.",
+                    "THE WHISTLE IS A MOTION.",
+                    "THE OCTAGON IS THE VOTE."
+                ],
+                [
+                    "EMPTY CROSSWALK?",
+                    "RAISED HAND?",
+                    "NO QUESTIONS?",
+                    "",
+                    "PRE-PEDESTRIAN AUTHORITY",
+                    "IS STILL AUTHORITY."
+                ],
+                [
+                    "BIRDS ABOVE.",
+                    "VESTS BELOW.",
+                    "WHISTLES BETWEEN.",
+                    "",
+                    "CONNECT THE CURBS."
+                ],
+                [
+                    "SCHOOL STARTS AT 8.",
+                    "THE SIGN HAS 8 SIDES.",
+                    "THE WORD CROSSING HAS 8 LETTERS.",
+                    "",
+                    "CONSPIRACY OR COINCIDENCE?",
+                    "YOU DECIDE."
+                ],
+                [
+                    "A NORMAL STOP SIGN",
+                    "STANDS IN ONE PLACE.",
+                    "",
+                    "A HANDHELD STOP SIGN",
+                    "GOES WHERE IT PLEASES."
+                ],
+                [
+                    "WHO GUARDS",
+                    "THE CROSSING GUARDS?",
+                    "",
+                    "FOLLOW THE WHISTLE MONEY.",
+                    "JOIN CAFT."
+                ]
+            ];
+
+            const poster = posters[Math.floor(Math.random() * posters.length)].join("\n");
+
+            document.getElementById("pledgePaper").innerHTML = `
+                <h3>Poster Copy</h3>
+                <pre style="white-space: pre-wrap; font-family: var(--font-mono);">${poster}</pre>
+                <div class="poster-roll">
+                    <button class="button secondary" type="button" onclick="posterText()">Roll another poster</button>
+                </div>
+            `;
+            showToast("Poster text generated. Tape responsibly.");
+        }
+
+        function beginPanic() {
+            state.panicMode = !state.panicMode;
+            document.body.style.filter = state.panicMode ? "contrast(1.12) saturate(1.28)" : "";
+            showToast(state.panicMode ? "Mild panic engaged. Breathe normally. Observe vests." : "Mild panic disengaged. The octagon remains.");
+        }
+        function drawHiringChart() {
+            const canvas = document.getElementById("hiringChart");
+            if (!canvas) return;
+
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = Math.max(600, rect.width * dpr);
+            canvas.height = Math.max(360, rect.height * dpr);
+
+            const ctx = canvas.getContext("2d");
+            ctx.scale(dpr, dpr);
+
+            const width = canvas.width / dpr;
+            const height = canvas.height / dpr;
+            const padding = { left: 58, right: 24, top: 26, bottom: 70 };
+
+            const years = [];
+            for (let year = 1930; year <= 2026; year += 4) {
+                years.push(year);
+            }
+
+            const events = [
+                { year: 1939, label: "World tension", spike: 38 },
+                { year: 1945, label: "Postwar reordering", spike: 44 },
+                { year: 1957, label: "Sputnik", spike: 36 },
+                { year: 1969, label: "Moon landing", spike: 52 },
+                { year: 1973, label: "Oil shock", spike: 41 },
+                { year: 1983, label: "A Nation at Risk", spike: 48 },
+                { year: 1991, label: "New world order", spike: 45 },
+                { year: 2001, label: "9/11", spike: 68 },
+                { year: 2008, label: "Financial crisis", spike: 59 },
+                { year: 2020, label: "Global shutdown", spike: 74 },
+                { year: 2026, label: "Vest saturation", spike: 62 }
+            ];
+
+            const data = years.map((year, index) => {
+                let base = 18 + index * 1.9 + Math.sin(index / 1.7) * 8;
+                events.forEach((event) => {
+                    const distance = Math.abs(year - event.year);
+                    if (distance <= 4) {
+                        base += event.spike * (1 - distance / 5);
+                    }
+                });
+                return { year, value: Math.round(base) };
+            });
+
+            const minYear = 1930;
+            const maxYear = 2026;
+            const maxValue = Math.max(...data.map((point) => point.value)) + 20;
+
+            const x = (year) => padding.left + ((year - minYear) / (maxYear - minYear)) * (width - padding.left - padding.right);
+            const y = (value) => height - padding.bottom - (value / maxValue) * (height - padding.top - padding.bottom);
+
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = "rgba(0,0,0,0.12)";
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.strokeStyle = "rgba(255,250,240,0.16)";
+            ctx.lineWidth = 1;
+
+            for (let tick = 0; tick <= 5; tick++) {
+                const value = (maxValue / 5) * tick;
+                const yy = y(value);
+                ctx.beginPath();
+                ctx.moveTo(padding.left, yy);
+                ctx.lineTo(width - padding.right, yy);
+                ctx.stroke();
+
+                ctx.fillStyle = "rgba(255,250,240,0.62)";
+                ctx.font = "12px Courier New";
+                ctx.fillText(String(Math.round(value)), 10, yy + 4);
+            }
+
+            ctx.strokeStyle = "rgba(255,224,49,0.95)";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            data.forEach((point, index) => {
+                const xx = x(point.year);
+                const yy = y(point.value);
+                if (index === 0) ctx.moveTo(xx, yy);
+                else ctx.lineTo(xx, yy);
+            });
+            ctx.stroke();
+
+            ctx.fillStyle = "rgba(255,42,31,0.92)";
+            data.forEach((point) => {
+                ctx.beginPath();
+                ctx.arc(x(point.year), y(point.value), 3.5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            events.forEach((event, index) => {
+                const xx = x(event.year);
+                const datum = data.reduce((best, point) => Math.abs(point.year - event.year) < Math.abs(best.year - event.year) ? point : best, data[0]);
+                const yy = y(datum.value);
+
+                ctx.strokeStyle = "rgba(255,42,31,0.55)";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(xx, padding.top);
+                ctx.lineTo(xx, height - padding.bottom);
+                ctx.stroke();
+
+                ctx.fillStyle = "rgba(255,224,49,0.95)";
+                ctx.font = "11px Courier New";
+                ctx.save();
+                ctx.translate(xx + 4, yy - 8 - (index % 3) * 14);
+                ctx.rotate(-0.38);
+                ctx.fillText(event.year + " " + event.label, 0, 0);
+                ctx.restore();
+            });
+
+            ctx.fillStyle = "rgba(255,250,240,0.78)";
+            ctx.font = "12px Courier New";
+            [1930, 1950, 1970, 1990, 2010, 2026].forEach((year) => {
+                ctx.fillText(String(year), x(year) - 14, height - 35);
+            });
+
+            ctx.fillStyle = "rgba(255,224,49,0.95)";
+            ctx.font = "bold 15px Courier New";
+            ctx.fillText("National Crossing Guard Hiring Index", padding.left, 18);
+        }
+
+        document.getElementById("closeModal").addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
+                closeModal();
+            }
+        });
+
+        document.querySelectorAll(".evidence-card").forEach((button) => {
+            button.addEventListener("click", () => {
+                const file = dossierFiles[button.dataset.file];
+                openModal(file.title, file.html);
+            });
+        });
+
+        document.querySelectorAll(".article").forEach((button) => {
+            button.addEventListener("click", () => {
+                const article = articles[button.dataset.article];
+                openModal(article.title, article.html);
+            });
+        });
+
+        document.querySelectorAll(".heat-node").forEach((node) => {
+            node.addEventListener("click", () => {
+                inspectHeatNode(node.dataset.node);
+            });
+        });
+
+        document.querySelectorAll(".quiz-options button").forEach((button) => {
+            button.addEventListener("click", () => {
+                classifyThreat(button.dataset.score);
+            });
+        });
+
+        document.getElementById("reportForm").addEventListener("submit", generateReport);
+
+        const openLedgerButton = document.getElementById("openLedgerButton");
+        if (openLedgerButton) {
+            openLedgerButton.addEventListener("click", openNextLedger);
+        }
+
+        const stampLedgerButton = document.getElementById("stampLedgerButton");
+        if (stampLedgerButton) {
+            stampLedgerButton.addEventListener("click", stampLedger);
+        }
+
+        document.getElementById("panicButton").addEventListener("click", beginPanic);
+        document.getElementById("pledgeButton").addEventListener("click", takePledge);
+        document.getElementById("downloadPoster").addEventListener("click", posterText);
+
+        document.getElementById("octagon").addEventListener("click", () => {
+            document.getElementById("octagon").classList.toggle("paused");
+            showToast("The octagon has noticed you noticing it.");
+        });
+        calculateBudget();
+        drawHiringChart();
+        window.addEventListener("resize", drawHiringChart);
+        window.setInterval(tickCounters, 1000);
+    </script>
+
+
+</body>
+</html>

@@ -120,18 +120,29 @@
         }
 
         .ge0cities-claim {
-            display: block;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.3rem 1rem;
             padding: 0.65rem 1rem;
             background: var(--vest);
-            color: var(--black);
             font-family: var(--font-mono);
             font-weight: 900;
             text-align: center;
         }
 
-        .ge0cities-claim:hover,
-        .ge0cities-claim:focus-visible {
+        .ge0cities-claim a {
+            color: var(--black);
+        }
+
+        .ge0cities-claim a:hover,
+        .ge0cities-claim a:focus-visible {
             background: var(--white);
+        }
+
+        .ge0cities-gmail {
+            font-size: 0.85em;
         }
 
         .classified-ribbon {
@@ -1402,7 +1413,10 @@
     <div class="classified-ribbon">VEST LEVEL EVENT</div>
 
     <div class="site-shell">
-        <a class="ge0cities-claim" href="mailto:ge0cities@ffdcle.com?subject=MUH%20GE0CITIES%20REQUEST&amp;body=I%20want%20to%20open%20a%20Ge0Cities%20site.%20Here%20are%20the%20details%3A%0D%0A%0D%0A&amp;su=MUH%20GE0CITIES%20REQUEST">Claim your Ge0cities site for free, now!</a>
+        <div class="ge0cities-claim">
+            <a href="mailto:ge0cities@ffdcle.com?subject=MUH%20GE0CITIES%20REQUEST&amp;body=I%20want%20to%20open%20a%20Ge0Cities%20site.%20Here%20are%20the%20details%3A%0D%0A%0D%0A">Claim your Ge0cities site for free, now!</a>
+            <a class="ge0cities-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=cm&amp;to=ge0cities%40ffdcle.com&amp;su=MUH%20GE0CITIES%20REQUEST&amp;body=I%20want%20to%20open%20a%20Ge0Cities%20site.%20Here%20are%20the%20details%3A%0D%0A%0D%0A">Open in Gmail</a>
+        </div>
         <header class="hero" id="top">
             <div class="hero-inner">
                 <div>
